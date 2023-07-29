@@ -107,6 +107,9 @@ function handleChange(info: UploadChangeParam) {
           ? dayjs(currentDay).diff(dayjs(currentJoinDate), 'day') + 1
           : 0
 
+        // 入职的年份和当前年份是否是同一年
+        const isSameYear = dayjs(currentDay).isSame(joinDate, 'year')
+
         // 年初到当前日期的天数
         let currentYearHoliday = 0
         const currentDayOfYear = dayjs(currentDay).dayOfYear()
@@ -135,6 +138,15 @@ function handleChange(info: UploadChangeParam) {
           }
         } else if (level === 'L1') {
           if (workYears < 1) {
+            if (isSameYear) {
+              const holiday = (remainDay * 5) / 365
+              currentYearHoliday = round(holiday)
+              currentYearRemainHoliday = round((remainDay * 5) / 365)
+            } else {
+              const holiday = (currentYearRemainDays * 5) / 365
+              currentYearHoliday = round(holiday)
+              currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
+            }
             const holiday = (joinDay * 5) / 365
             currentYearHoliday = round(holiday)
             currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
@@ -153,9 +165,15 @@ function handleChange(info: UploadChangeParam) {
           }
         } else if (level === 'L2') {
           if (workYears < 1) {
-            const holiday = (joinDay * 5) / 365
-            currentYearHoliday = round(holiday)
-            currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
+            if (isSameYear) {
+              const holiday = (remainDay * 5) / 365
+              currentYearHoliday = round(holiday)
+              currentYearRemainHoliday = round((remainDay * 5) / 365)
+            } else {
+              const holiday = (currentYearRemainDays * 5) / 365
+              currentYearHoliday = round(holiday)
+              currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
+            }
           } else if (workYears < 2) {
             const holiday = (currentDayOfYear * 5) / 365
             currentYearHoliday = round(holiday)
@@ -174,6 +192,16 @@ function handleChange(info: UploadChangeParam) {
             const holiday = (joinDay * 10) / 365
             currentYearHoliday = round(holiday)
             currentYearRemainHoliday = round((currentYearRemainDays * 10) / 365)
+
+            if (isSameYear) {
+              const holiday = (remainDay * 10) / 365
+              currentYearHoliday = round(holiday)
+              currentYearRemainHoliday = round((remainDay * 10) / 365)
+            } else {
+              const holiday = (currentYearRemainDays * 10) / 365
+              currentYearHoliday = round(holiday)
+              currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
+            }
           } else if (workYears < 10) {
             const holiday = (currentDayOfYear * 10) / 365
             currentYearHoliday = round(holiday)
