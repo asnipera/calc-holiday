@@ -135,7 +135,7 @@ function handleChange(info: UploadChangeParam) {
           }
         } else if (level === 'L1') {
           if (workYears < 1) {
-            const holiday = (remainDay * 5) / 365
+            const holiday = (joinDay * 5) / 365
             currentYearHoliday = round(holiday)
             currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
           } else if (workYears < 3) {
@@ -153,7 +153,7 @@ function handleChange(info: UploadChangeParam) {
           }
         } else if (level === 'L2') {
           if (workYears < 1) {
-            const holiday = (remainDay * 5) / 365
+            const holiday = (joinDay * 5) / 365
             currentYearHoliday = round(holiday)
             currentYearRemainHoliday = round((currentYearRemainDays * 5) / 365)
           } else if (workYears < 2) {
@@ -171,7 +171,7 @@ function handleChange(info: UploadChangeParam) {
           }
         } else if (level === 'L3') {
           if (workYears < 1) {
-            const holiday = (remainDay * 10) / 365
+            const holiday = (joinDay * 10) / 365
             currentYearHoliday = round(holiday)
             currentYearRemainHoliday = round((currentYearRemainDays * 10) / 365)
           } else if (workYears < 10) {
