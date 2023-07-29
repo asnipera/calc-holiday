@@ -67,7 +67,7 @@ function download() {
   }
   Object.assign(ws, wchs, merges)
   utils.book_append_sheet(wb, ws, 'Sheet1')
-  writeFile(wb, 'test.xlsx')
+  writeFile(wb, '年假计算表格.xlsx')
   setTimeout(() => {
     loading.value = false
   }, 2000)
